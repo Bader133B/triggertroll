@@ -1,0 +1,7 @@
+# FiveM resource files (not needed for GitHub Pages)
+client.lua
+server.lua
+fxmanifest.lua
+nui/
+HOW-IT-WORKS.md
+
